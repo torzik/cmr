@@ -10,6 +10,7 @@ Clone the repository
 
 In order to use the plugin SMTP server shoul be started on your hosting.
 If you wanto to try it on localhost(let's say XAMPP) you need to change:
+
 	1) php.ini file:
 
 		a. [mail function] section
@@ -40,4 +41,3 @@ If you wanto to try it on localhost(let's say XAMPP) you need to change:
 
 		  c. force_sender=user@gmail.com
 
-sd
