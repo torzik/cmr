@@ -11,7 +11,9 @@ Clone the repository
 In order to use the plugin SMTP server shoul be started on your hosting.
 If you wanto to try it on localhost(let's say XAMPP) you need to change:
 	1) php.ini file:
+
 		a. [mail function] section
+
 			; For Win32 only.
 			; http://php.net/smtp
 
@@ -35,6 +37,7 @@ If you wanto to try it on localhost(let's say XAMPP) you need to change:
 
 		  b. auth_username=user@gmail.com	
 			 auth_password=your_gmail_password
-			 
+
 		  c. force_sender=user@gmail.com
 
+sd
