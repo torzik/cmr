@@ -21,41 +21,35 @@ function cmr_to_admin_panel()
 	 // var_dump($tableName);
 	$select = "select * from " . $tableName;
 	$users = $wpdb->get_results($select, OBJECT);
-	foreach ($users as $user) {
-		var_dump($user->car_number, $user->customer_email);
-	}
 	
 	?>
 
 	<div class="wrap">
 	 	<h2>Car Maintenance Reminder Users</h2>
-		<form class="cmr-users wp-list-table widefat fixed striped users">
+		<table class="cmr-users wp-list-table widefat fixed striped users">
 			<thead>
-				<td class="manage-column column-cb check-column">
-					<input id="cb-select-all-1" type="checkbox">
-				</td>
 				<tr>
 					<th id="car-number">Car Number</th>
-				</tr>
-				<tr>
 					<th id="customer-name">Customer Name</th>
-				</tr>
-				<tr>
-					<th id="maintanence-time">Maintanence Time</th>
-				</tr>
-				<tr>
-					<th id="maintanence-time">Maintanence Reminder Time</th>
-				</tr>
-				<tr>
+					<th id="maintanence-time">Maintanence Date</th>
+					<th id="maintanence-time">Maintanence Reminder Date</th>
 					<th id="is-registered">Registered On Site</th>
-				</tr>
-				<tr>
 					<th id="customer-email">Customer Email</th>
 				</tr>
 			</thead>
 			<tbody>
+					<?php foreach ($users as $user) :?>
+					<tr>
+							<td> <?php echo $user->car_number; ?></td>
+							<td><?php echo $user->customer_name; ?></td>
+							<td><?php echo $user->maintenance_time; ?></td>
+							<td><?php echo $user->reminder_maintenance_time; ?></td>
+							<td><?php echo $user->isregistered_on_site; ?></td>
+							<td><?php echo $user->customer_email; ?></td>
+					<?php endforeach; ?>
+					</tr>
 			</tbody>
-		</form>
+		</table>
 	</div>
 <?php
 }
@@ -85,8 +79,8 @@ function cmr_activate_create_db()
 	$table_name = $wpdb->prefix . 'cmr_user';
 		$sql = "CREATE TABLE $table_name (
 		id mediumint(9) NOT NULL AUTO_INCREMENT,
-		maintenance_time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
-		reminder_maintenance_time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+		maintenance_time datetime DEFAULT '0000-00-00' NOT NULL,
+		reminder_maintenance_time datetime DEFAULT '0000-00-00' NOT NULL,
 		car_number mediumint(7) NOT NULL,
 		customer_name VARCHAR(255) NOT NULL,
 		customer_email VARCHAR(255) NOT NULL,
